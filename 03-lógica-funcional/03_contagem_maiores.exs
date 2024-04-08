@@ -17,7 +17,18 @@ defmodule ContagemMaioresQue do
   """
   @spec run(list(integer), integer) :: integer
   def run(nums, n) do
-    # FIXME
+    larger(nums, n, 0)
+  end
+
+  defp larger([], _n, acc), do: acc
+
+  defp larger([head | tail], n, acc) do 
+    cond do
+      head > n ->
+        larger(tail, n, acc + 1) 
+      :true ->
+        larger(tail, n, acc)
+    end
   end
 end
 

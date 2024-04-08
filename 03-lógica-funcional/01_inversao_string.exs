@@ -18,8 +18,16 @@ defmodule InversaoString do
   """
   @spec run(String.t()) :: String.t()
   def run(s) do
-    # FIXME
+    list = String.to_charlist(s)
+    invert(list, []) |> List.to_string()
   end
+
+  defp invert([], inv_list), do: inv_list
+
+  defp invert([head | tail], inv_list) do
+    invert(tail, [head | inv_list])
+  end
+
 end
 
 defmodule InversaoStringTest do

@@ -18,7 +18,18 @@ defmodule SomaImpares do
   """
   @spec run(list(integer)) :: integer
   def run(nums) do
-    # FIXME
+    odd_sum(nums, 0)
+  end
+
+  defp odd_sum([], acc), do: acc
+
+  defp odd_sum([head | tail], acc) do
+    cond do
+      rem(head, 2) != 0 ->
+        odd_sum(tail, acc + head)
+      :true ->
+        odd_sum(tail, acc)
+    end
   end
 end
 
