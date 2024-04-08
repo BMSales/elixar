@@ -18,7 +18,18 @@ defmodule ListaOrdenada do
   """
   @spec run(list(integer)) :: boolean
   def run(nums) do
-    # FIXME
+    check_ordered(nums)
+  end
+
+  defp check_ordered([_head | []]), do: true
+
+  defp check_ordered([x, y| tail]) do
+    cond do
+      x > y ->
+        false
+      :true ->
+        check_ordered([y | tail])
+    end
   end
 end
 

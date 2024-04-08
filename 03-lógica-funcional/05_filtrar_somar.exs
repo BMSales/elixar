@@ -17,8 +17,20 @@ defmodule FiltrarSomar do
   """
   @spec run(list(integer), integer) :: integer
   def run(nums, n) do
-    # FIXME
+    filter_sum(nums, n, 0)
   end
+
+  defp filter_sum([], _n, acc), do: acc
+
+  defp filter_sum([head | tail], n, acc) do
+    cond do
+      head > n ->
+        filter_sum(tail, n, acc + head)
+      :true ->
+        filter_sum(tail, n, acc)
+    end
+  end
+
 end
 
 defmodule FiltrarSomarTest do

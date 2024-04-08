@@ -17,7 +17,15 @@ defmodule DuplicacaoLista do
   """
   @spec run(list(any)) :: list(any)
   def run(lista) do
-    # FIXME
+    dup_list(lista, [])
+    |>
+    Enum.reverse()
+  end
+
+  defp dup_list([], dupped_list), do: dupped_list
+
+  defp dup_list([head | tail], dupped_list) do
+    dup_list(tail, [head, head | dupped_list])
   end
 end
 
