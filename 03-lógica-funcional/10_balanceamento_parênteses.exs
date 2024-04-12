@@ -1,29 +1,37 @@
 ExUnit.start()
 
 defmodule VerificacaoParenteses do
-  @doc """
-  Verifica se os parênteses em uma string estão corretamente balanceados.
-  A função deve retornar `true` se a string estiver corretamente balanceada
-  e `false` caso contrário. Considere apenas os caracteres `(` e `)`.
-
-  ## Dicas
-  - Utilize uma função auxiliar recursiva que mantenha uma contagem de parênteses abertos.
-  - Lembre-se de que, em qualquer ponto da string, o número de parênteses fechando não pode ser maior que o número de parênteses abrindo.
-
-  ## Exemplos
-
-      iex> VerificacaoParenteses.run("()")
-      true
-
-      iex> VerificacaoParenteses.run("((()))")
-      true
-
-      iex> VerificacaoParenteses.run("(()")
-      false
-  """
   @spec run(String.t()) :: boolean
   def run(s) do
-    # FIXME
+    list = String.to_charlist(s)
+    parantheses(list, 0)
+  end
+
+  defp parantheses([], counter) do
+    cond do
+      counter == 0 ->
+        true
+      :true ->
+        false
+    end
+  end
+
+  defp parantheses([head | tail], counter) do
+    in_counter = cond do
+      head == 40 ->
+        counter + 1
+      head == 41 ->
+        counter - 1
+      :true ->
+        counter
+    end
+
+    cond do 
+      in_counter < 0 ->
+        false
+      :true ->
+        parantheses(tail, in_counter)
+    end
   end
 end
 
