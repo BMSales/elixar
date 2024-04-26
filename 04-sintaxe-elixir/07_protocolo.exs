@@ -1,5 +1,9 @@
 ExUnit.start()
 
+defmodule MinhaStruct do
+  defstruct [:name]
+end
+
 defmodule ImplementacaoProtocolo do
   @doc """
   Implementa um protocolo para formatar structs diferentes.
@@ -15,7 +19,11 @@ defmodule ImplementacaoProtocolo do
   """
   @spec formatar(map) :: String.t()
   def formatar(struct) do
-    # FIXME
+    formatada = String.to_charlist(" formatada: ")
+    name = String.to_charlist(struct.name)
+    module_name = struct.__struct__ |> inspect |> String.to_charlist()
+
+    module_name ++ formatada ++ name |> to_string
   end
 end
 

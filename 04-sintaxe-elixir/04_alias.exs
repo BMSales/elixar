@@ -1,21 +1,24 @@
 ExUnit.start()
 
+defmodule Test do
+
+  def printer(element) do
+    IO.puts(element)
+  end
+
+end
+
 defmodule UsoAlias do
-  @doc """
-  Demonstra o uso de `alias` para simplificar a chamada de uma função de um módulo longo.
 
-  ## Dicas
-  - Defina um módulo com um nome longo e use `alias` para encurtá-lo.
-
-  ## Exemplos
-
-      iex> UsoAlias.run()
-      :ok
-  """
+  alias Test, as: Print
+  
   @spec run() :: atom
   def run() do
-    # FIXME
+    element = "yeah"
+    Print.printer(element)
+    :ok
   end
+
 end
 
 defmodule UsoAliasTest do

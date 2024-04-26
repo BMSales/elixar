@@ -14,7 +14,9 @@ defmodule UsoSigilos do
   """
   @spec run(String.t()) :: list(String.t())
   def run(texto) do
-    # FIXME
+    regex = ~r/123|456/
+    string_list = String.split(texto, " ")
+    for substring <- string_list, substring =~ regex, do: substring
   end
 end
 

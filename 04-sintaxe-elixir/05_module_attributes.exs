@@ -1,6 +1,7 @@
 ExUnit.start()
 
 defmodule UsoModuleAttributes do
+  @param "42"
   @doc """
   Demonstra o uso de module attributes como constantes.
 
@@ -14,7 +15,11 @@ defmodule UsoModuleAttributes do
   """
   @spec run() :: String.t()
   def run() do
-    # FIXME
+    string = "O valor da constante é: "
+    list_1 = String.to_charlist(string)
+    list_2 = String.to_charlist(@param)
+    list_final = list_1 ++ list_2
+    List.to_string(list_final)
   end
 end
 
